@@ -1,1 +1,1 @@
-This is Henry project.
+This is Henry's collection of projects.
