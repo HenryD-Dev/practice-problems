@@ -48,7 +48,7 @@ def startCustomerOrder():
         print(f"The discounted bill is: ${math.floor(math.fsum(totalPrices) * 0.9)}!\n")
     elif cashOrCard == "card" or cashOrCard == "Card":
         print(f"The total of the bill is: {calculateTotal(totalPrices)}!\n")
-    else: print(f"\nCustomers are kicked out.\n")
+    else: print(f"\nThe customer(s) is/are kicked out.\n")
     
 # function that asks if the restarant is still open for it to ether accept new customers or close shop
 def isRestaurantOpen():     

@@ -1,0 +1,7 @@
+Num is: 52
+Num is: 24
+Num is: 69
+Num is: 1
+Num is: 3
+Num is: 10
+Num is: 13
