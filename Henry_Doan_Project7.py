@@ -17,6 +17,7 @@ def main():
         question1 = input("\nRe-Enter your answer using numbers no less than 0 or more than 10 (unless you really like it that much):\n")
         isDigit = question1.isdigit()
 
+    
     # Question 2: The User is asked if they would recommend others to join or attend their school.
 
     question2 = input("\nWould you recommend others to join or attend your school? (Enter Yes or No.)\n")
@@ -43,6 +44,7 @@ def main():
             question2 = question2.replace("yes", "Yes")
         elif question2 == "no":
             question2 = question2.replace("no", "No")
+
 
     # Question 3: User's School name.
     
