@@ -1,5 +1,5 @@
 # Author: Henry Doan
-# Project 8
+# Project 8 part 2
 # program can read the contents of a file, 
 # where each record in the file has 5 fields,
 # and store all of the records in a single data structure.
