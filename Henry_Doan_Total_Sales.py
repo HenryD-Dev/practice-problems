@@ -4,6 +4,7 @@
 # The amounts should be stored in a list.
 # Use a loop to calculate the total sales for the week and display the result.
 
+# Each individual days store into a list
 weekTotal = []
 
 # Input validation for input less than zero

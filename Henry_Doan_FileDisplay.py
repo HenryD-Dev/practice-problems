@@ -11,6 +11,7 @@ fileDisplay = open("Henry_Doan_File-Display.txt", "w")
 while number != "":     # condition
     number = int(number)
     fileDisplay.write(f"Num is: {str(number)}\n")
+    print(number)
     number = intFile.readline()   # Update
 intFile.close()
 fileDisplay.close()
