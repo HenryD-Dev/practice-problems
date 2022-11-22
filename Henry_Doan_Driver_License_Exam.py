@@ -28,6 +28,7 @@ for i in range(20):
     else:
         grading.append(False)
 
+
 # Did the student pass or failed
 if grading.count(True) >= 15:
     print("Student passed the exam.")
@@ -38,6 +39,7 @@ else:
 # The answers the student gotten correct or wrong
 print(f"The total correct answers the student got are: {grading.count(True)}")
 print(f"The total incorrect answers the student got are: {grading.count(False)}")
+
 
 # the question(s) that the student gotten wrong
 for index, value in enumerate(grading):
