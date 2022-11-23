@@ -17,6 +17,7 @@ def numAppend():
         list20.append(number20)
 numAppend()
 
+
 # total and average
 listTotal = sum(list20)
 listAverage = sum(list20) / len(list20)
