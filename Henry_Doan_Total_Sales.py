@@ -13,6 +13,7 @@ def lessZero(x):
         x = float(input("\nRe-Enter a number greater than 0:\n"))
         weekTotal.append(x)
 
+
 # The store sales for each day in the week
 def weekSale():
     for saleDays in range(7):
