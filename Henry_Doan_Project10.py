@@ -15,3 +15,14 @@
 # that shows the top five players for each of the 6 individually calculated values.
 # Additionally, include in this report the overall batting average for all 25 players combined.
 
+playersStats = []
+
+def readFile():
+    file = open("BBStats.txt", "r")    # open data.txt file
+    playerInfo = file.readline()
+    while playerInfo != "":
+        playersStats.append(playerInfo.split())
+        playerInfo = file.readline()
+    print(playersStats)
+    file.close()
+readFile()
