@@ -15,14 +15,33 @@
 # that shows the top five players for each of the 6 individually calculated values.
 # Additionally, include in this report the overall batting average for all 25 players combined.
 
-playersStats = []
-
-def readFile():
+# Create Players Stat Nested Lists:
+def readPlayerStats():
+    playersStats = []
     file = open("BBStats.txt", "r")    # open data.txt file
     playerInfo = file.readline()
     while playerInfo != "":
         playersStats.append(playerInfo.split())
         playerInfo = file.readline()
-    print(playersStats)
+    #print(playersStats)
     file.close()
-readFile()
+    return playersStats
+
+# Players batting av
+playersStats = readPlayerStats()
+
+def calPlayerBattingAvg(data):
+    totalBattingAvg = []
+    for playerIdx in range(1, len(data)):
+        playerHits = int(data[playerIdx][7])
+        playerAtBats = int(data[playerIdx][5])
+        playerBattingAvg = playerHits / playerAtBats
+
+        totalBattingAvg.append(playerBattingAvg)
+
+    print("\n\n")
+    print([totalBattingAvg, len(totalBattingAvg)])
+
+    return totalBattingAvg
+
+calPlayerBattingAvg(playersStats)
