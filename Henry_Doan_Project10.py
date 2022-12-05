@@ -29,7 +29,6 @@ def readPlayerStats():
     file.close()
     return playersStats
 
-# Players' informations
 playerStats = readPlayerStats()
 
 
@@ -174,7 +173,7 @@ def calPlayerRunsProducedPerAtBat(data1, data2):
 playerRunsProducedPerAtBat = calPlayerRunsProducedPerAtBat(playerStats, playerRunsProduced)
 
 
-
+# Caculate the average of the 25 players' Batting Averages
 def calAvgOfPlayerBattingAvg(data):
     
     averageOfBattingAvg = []
@@ -185,7 +184,7 @@ def calAvgOfPlayerBattingAvg(data):
 
     roundAverageOfBattingAvg = [round(num, 4) for num in averageOfBattingAvg]
 
-    print(f"\n\nThis is the average of batting averages from the sum each of 25 players; orginized in the original text file order:\n{roundAverageOfBattingAvg}")
+    print(f"\n\nThis is the average of batting averages from the sum each of 25 players; orginized in the original text file order:\n{roundAverageOfBattingAvg}\n")
 
     return averageOfBattingAvg
 
@@ -212,10 +211,8 @@ def addNametoScores(players, scores):
     nestedData = {}
     for i in range(len(players)):
         nestedData[scores[i]] = players[i]
-    print("\n\n")
-    print(nestedData)
+ 
     return nestedData
-
 
 # Lists of Names with their categories Data:
 playerWithBatting = addNametoScores(players, playerBattingAvg)
@@ -225,6 +222,8 @@ playerWithOPS = addNametoScores(players, playerOPS)
 playerWithRunPro = addNametoScores(players, playerRunsProduced)
 playerWithRunPerAtBat = addNametoScores(players, playerRunsProducedPerAtBat)
 
+
+# Sorting players to be highest 5 players
 def sortTopFivePlayers(data, mapping, rounded):
     # Ordered from highest to lowest scores
     scores = sorted(data, reverse=True)
@@ -233,8 +232,6 @@ def sortTopFivePlayers(data, mapping, rounded):
     for idx in range(5):
         topPlayers.append([mapping[scores[idx]], round(scores[idx], rounded)]) 
     
-    print("\n")
-    print(topPlayers)
     return topPlayers
 
 # Top FIVE Players in each categories:
@@ -246,6 +243,8 @@ topFiveRunsProduced = sortTopFivePlayers(playerRunsProduced, playerWithRunPro, 4
 topFiveRunPerAtBat = sortTopFivePlayers(playerRunsProducedPerAtBat, playerWithRunPerAtBat, 4)
 
 
+# Export The output Text File that contains the top 5 players in each caculations,
+# as well as the average of all 25 players' Batting Average.
 def exportOutput(data1, data2, data3, data4, data5, data6, data7):
 
     baseBallReport = "Henry_Doan_BaseBall_Report.txt"
@@ -264,7 +263,7 @@ def exportOutput(data1, data2, data3, data4, data5, data6, data7):
             writeSluggingPercent = "{}: {}\n".format(sublist[0], sublist[1])
             file.write(writeSluggingPercent)
 
-        header3 = file.write("The Top 5 players in On-Base Percentage:\n\n")
+        header3 = file.write("\n\nThe Top 5 players in On-Base Percentage:\n\n")
 
         for sublist in data3:
             writeOnBasePercent = "{}: {}\n".format(sublist[0], sublist[1])
