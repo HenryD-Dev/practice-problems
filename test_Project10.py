@@ -27,10 +27,51 @@ def calPlayerBattingAvg(data):
 
     return totalBattingAvg
 
-calPlayerBattingAvg(playersStats)
+#calPlayerBattingAvg(playersStats)
+
+
+def playerNames(data):
+    nameContainer = []
+    for playerIdx in range(1, len(data)):
+
+        playerFirstName = data[playerIdx][0]
+        playerLastName = data[playerIdx][1]
+        playerFullName = playerFirstName + " " + playerLastName
+
+        nameContainer.append(playerFullName)
+    return nameContainer
+# -- Player's Name list:
+players = playerNames(playersStats)
 
 
 
+def addNametoScores(players, scores):
+    nestedData = []
+    for i in range(len(players)):
+        nestedData.append([players[i], scores[i]])
+    
+    print(nestedData)
+    return nestedData
+
+
+
+
+
+#def sortAndExport(mainData):
+
+#    playerNames = []
+
+#    for playerIdx in range(1, len(mainData)):
+
+#        playerFirstName = mainData[playerIdx][0]
+#        playerLastName = mainData[playerIdx][1]
+#        playerFullName = playerFirstName + " " + playerLastName
+
+#        playerNames.append(playerFullName)
+
+#    print(playerNames, len(playerNames))
+
+#sortAndExport(playersStats)
 
 
 
@@ -52,3 +93,4 @@ calPlayerBattingAvg(playersStats)
 #    print([totalBattingAvg, len(totalBattingAvg)])
 
 #    return 
+
