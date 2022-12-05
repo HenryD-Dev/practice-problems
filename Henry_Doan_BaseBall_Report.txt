@@ -1,0 +1,55 @@
+The Top 5 players in Batting Average:
+
+Christian Yelich: 0.329
+Ketel Marte: 0.329
+Anthony Rendon: 0.319
+Jeff McNeil: 0.318
+Nolan Arenado: 0.315
+
+
+The Top 5 players in Slugging Percentage:
+
+Christian Yelich: 0.6708
+Cody Bellinger: 0.629
+Anthony Rendon: 0.5982
+Ketel Marte: 0.5923
+Nolan Arenado: 0.5833
+The Top 5 players in On-Base Percentage:
+
+Christian Yelich: 0.4293
+Anthony Rendon: 0.4118
+Cody Bellinger: 0.4061
+Anthony Rizzo: 0.4046
+Juan Soto: 0.4006
+
+
+The Top 5 players in OPS:
+
+Christian Yelich: 1.1001
+Cody Bellinger: 1.0351
+Anthony Rendon: 1.0099
+Ketel Marte: 0.9808
+Nolan Arenado: 0.9625
+
+
+The Top 5 players in Runs Produced:
+
+Anthony Rendon: 209
+Freddie Freeman: 196
+Cody Bellinger: 189
+Ronald Acuna: 187
+Juan Soto: 186
+
+
+The Top 5 players in Runs Produced per At-Bat:
+
+Anthony Rendon: 0.3835
+Juan Soto: 0.3432
+Cody Bellinger: 0.3387
+Max Muncy: 0.3368
+Freddie Freeman: 0.3283
+
+
+The sum of the 25 Batting Averages:
+
+0.287

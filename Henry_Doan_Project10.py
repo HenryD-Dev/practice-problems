@@ -46,7 +46,7 @@ def calPlayerBattingAvg(data):
 
         totalBattingAvg.append(playerBattingAvg)
 
-    roundTotalBattingAvg = [round(num, 4) for num in totalBattingAvg]
+    roundTotalBattingAvg = [round(num, 3) for num in totalBattingAvg]
     print(f"\n\nThis is the batting averages of each 25 players in original text file order:\n{roundTotalBattingAvg}")
 
     return totalBattingAvg
@@ -192,70 +192,105 @@ def calAvgOfPlayerBattingAvg(data):
 averageOfPlayerBattingAvg = calAvgOfPlayerBattingAvg(playerBattingAvg)
 
 
+# Player Names
+def playerNames(data):
+    nameContainer = []
+    for playerIdx in range(1, len(data)):
 
-
-def sortAndExport(mainData, data1, data2, data3, data4, data5, data6, data7):
-
-    playerNames = []
-    namedBattingAvgs = []
-    namedSluggingPercent = []
-    namedOnBasePercent = []
-    playersOPS = []
-    playersRunsProduced = []
-    playersRunsProducedPerAtBat = []
-
-    for playerIdx in range(1, len(mainData)):
-
-        playerFirstName = mainData[playerIdx][0]
-        playerLastName = mainData[playerIdx][1]
+        playerFirstName = data[playerIdx][0]
+        playerLastName = data[playerIdx][1]
         playerFullName = playerFirstName + " " + playerLastName
 
-        playerNames.append(playerFullName)
-
-    roundData1 = [round(num, 3) for num in data1]
-    roundData2 = [round(num, 4) for num in data2]
-    roundData3 = [round(num, 4) for num in data3]
-    roundData4 = [round(num, 4) for num in data4]
-    roundData6 = [round(num, 4) for num in data6]
-    roundData7 = [round(num, 4) for num in data7]
+        nameContainer.append(playerFullName)
+    return nameContainer
+# -- Player's Name list:
+players = playerNames(playerStats)
 
 
-
-    for i in range(len(playerNames)):
-            
-        totalOPS.append(playerSlugging + playerOnBase)
-
-
-
-    data1.sort(key=lambda x:x[i], reverse = True)
-    data2.sort(key=lambda x:x[i], reverse = True)
-    data3.sort(key=lambda x:x[i], reverse = True)
-    data4.sort(key=lambda x:x[i], reverse = True)
-    data5.sort(key=lambda x:x[i], reverse = True)
-    data6.sort(key=lambda x:x[i], reverse = True)
+# add names to Scores
+def addNametoScores(players, scores):
+    nestedData = {}
+    for i in range(len(players)):
+        nestedData[scores[i]] = players[i]
+    print("\n\n")
+    print(nestedData)
+    return nestedData
 
 
-    with open("BBStats.txt", "w") as file:
-        for line in data1:
-            topBattingAvg = file.write(f"{line}\n")
+# Lists of Names with their categories Data:
+playerWithBatting = addNametoScores(players, playerBattingAvg)
+playerWithSlugging = addNametoScores(players, playerSluggingPercent)
+playerWithOnBase = addNametoScores(players, playerOnBasePercent)
+playerWithOPS = addNametoScores(players, playerOPS)
+playerWithRunPro = addNametoScores(players, playerRunsProduced)
+playerWithRunPerAtBat = addNametoScores(players, playerRunsProducedPerAtBat)
 
-        for line in data2:        
-            topSluggingPercent = file.write(f"{line}\n")
+def sortTopFivePlayers(data, mapping, rounded):
+    # Ordered from highest to lowest scores
+    scores = sorted(data, reverse=True)
+    topPlayers = []
 
-        for line in data3:
-            topOnBasePercent = file.write(f"{line}\n")
+    for idx in range(5):
+        topPlayers.append([mapping[scores[idx]], round(scores[idx], rounded)]) 
+    
+    print("\n")
+    print(topPlayers)
+    return topPlayers
 
-        for line in data4:
-            topOPS = file.write(f"{line}\n")
+# Top FIVE Players in each categories:
+topFiveBattingAvg = sortTopFivePlayers(playerBattingAvg, playerWithBatting, 3)
+topFiveSluggingPercent = sortTopFivePlayers(playerSluggingPercent, playerWithSlugging, 4)
+topFiveOnBasePercent = sortTopFivePlayers(playerOnBasePercent, playerWithOnBase, 4)
+topFiveOPS = sortTopFivePlayers(playerOPS, playerWithOPS, 4)
+topFiveRunsProduced = sortTopFivePlayers(playerRunsProduced, playerWithRunPro, 4)
+topFiveRunPerAtBat = sortTopFivePlayers(playerRunsProducedPerAtBat, playerWithRunPerAtBat, 4)
 
-        for line in data5:            
-            topRunsProduced = file.write(f"{line}\n")
 
-        for line in data6:            
-            topRunsPerAtBats = file.write(f"{line}\n")
+def exportOutput(data1, data2, data3, data4, data5, data6, data7):
+
+    baseBallReport = "Henry_Doan_BaseBall_Report.txt"
+
+    with open(baseBallReport, "w") as file:
+        
+        header1 = file.write("The Top 5 players in Batting Average:\n\n")
+        
+        for sublist in data1:
+            writeBattingAvg = "{}: {}\n".format(sublist[0], sublist[1])
+            file.write(writeBattingAvg)
+
+        header2 = file.write("\n\nThe Top 5 players in Slugging Percentage:\n\n")
+
+        for sublist in data2:        
+            writeSluggingPercent = "{}: {}\n".format(sublist[0], sublist[1])
+            file.write(writeSluggingPercent)
+
+        header3 = file.write("The Top 5 players in On-Base Percentage:\n\n")
+
+        for sublist in data3:
+            writeOnBasePercent = "{}: {}\n".format(sublist[0], sublist[1])
+            file.write(writeOnBasePercent)
+
+        header4 = file.write("\n\nThe Top 5 players in OPS:\n\n")
+
+        for sublist in data4:
+            writeOPS = "{}: {}\n".format(sublist[0], sublist[1])
+            file.write(writeOPS)
+
+        header5 = file.write("\n\nThe Top 5 players in Runs Produced:\n\n")
+
+        for sublist in data5:            
+            writeRunsProduced = "{}: {}\n".format(sublist[0], sublist[1])
+            file.write(writeRunsProduced)
+
+        header6 = file.write("\n\nThe Top 5 players in Runs Produced per At-Bat:\n\n")
+
+        for sublist in data6:            
+            writeRunsPerAtBats = "{}: {}\n".format(sublist[0], sublist[1])
+            file.write(writeRunsPerAtBats)
+
+        header7 = file.write("\n\nThe sum of the 25 Batting Averages:\n\n")
 
         for line in data7:           
-            averageOfBattingAvg = file.write(f"{line}\n")
+            file.write(f"{round(line, 3)}")
 
-
-#sortAndExport(playerStats, playerBattingAvg, playerSluggingPercent, playerOnBasePercent, playerOPS, playerRunsProduced, playerRunsProducedPerAtBat, averageOfPlayerBattingAvg)
+exportOutput(topFiveBattingAvg, topFiveSluggingPercent, topFiveOnBasePercent, topFiveOPS, topFiveRunsProduced, topFiveRunPerAtBat, averageOfPlayerBattingAvg)
