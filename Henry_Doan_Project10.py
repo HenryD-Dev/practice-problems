@@ -173,22 +173,39 @@ def calPlayerRunsProducedPerAtBat(data1, data2):
 playerRunsProducedPerAtBat = calPlayerRunsProducedPerAtBat(playerStats, playerRunsProduced)
 
 
-# Caculate the average of the 25 players' Batting Averages
-def calAvgOfPlayerBattingAvg(data):
+# Caculate the overall batting average of the 25 players
+def calOverallPlayerBattingAvg(data):
     
-    averageOfBattingAvg = []
+    overallBattingAvg = []
 
-    sumOfBattingAverage = sum(data)
+    totalHits = []
 
-    averageOfBattingAvg.append(sumOfBattingAverage / len(data))
+    totalAtBats = []
 
-    roundAverageOfBattingAvg = [round(num, 4) for num in averageOfBattingAvg]
+    for playerIdx in range(1, len(data)):
 
-    print(f"\n\nThis is the average of batting averages from the sum each of 25 players; orginized in the original text file order:\n{roundAverageOfBattingAvg}\n")
+        playerHits = int(data[playerIdx][7])
+        playerAtBat = int(data[playerIdx][5])
+    
+        totalHits.append(playerHits)
+        totalAtBats.append(playerAtBat)
 
-    return averageOfBattingAvg
+    sumOfHits = sum(totalHits)
+    sumOfAtBats = sum(totalAtBats)
 
-averageOfPlayerBattingAvg = calAvgOfPlayerBattingAvg(playerBattingAvg)
+    overallBattingAvg.append(sumOfHits / sumOfAtBats)
+
+    roundAverageOfBattingAvg = [round(num, 4) for num in overallBattingAvg]
+    print(f"\n{totalHits}\n")
+    print(f"\n{totalAtBats}\n")
+    print(f"\n{sumOfHits}\n")
+    print(f"\n{sumOfAtBats}\n")
+
+    print(f"\n\nThis is the overall batting average of the 25 players; orginized in the original text file order:\n{roundAverageOfBattingAvg}\n")
+
+    return overallBattingAvg
+
+overallPlayerBattingAvg = calOverallPlayerBattingAvg(playerStats)
 
 
 # Player Names
@@ -287,9 +304,9 @@ def exportOutput(data1, data2, data3, data4, data5, data6, data7):
             writeRunsPerAtBats = "{}: {}\n".format(sublist[0], sublist[1])
             file.write(writeRunsPerAtBats)
 
-        header7 = file.write("\n\nThe sum of the 25 Batting Averages:\n\n")
+        header7 = file.write("\n\nThe overall Batting averages of the 25 players:\n\n")
 
         for line in data7:           
             file.write(f"{round(line, 3)}")
 
-exportOutput(topFiveBattingAvg, topFiveSluggingPercent, topFiveOnBasePercent, topFiveOPS, topFiveRunsProduced, topFiveRunPerAtBat, averageOfPlayerBattingAvg)
+exportOutput(topFiveBattingAvg, topFiveSluggingPercent, topFiveOnBasePercent, topFiveOPS, topFiveRunsProduced, topFiveRunPerAtBat, overallPlayerBattingAvg)

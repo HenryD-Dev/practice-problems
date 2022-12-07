@@ -52,6 +52,6 @@ Max Muncy: 0.3368
 Freddie Freeman: 0.3283
 
 
-The sum of the 25 Batting Averages:
+The overall Batting averages of the 25 players:
 
-0.287
+0.288
